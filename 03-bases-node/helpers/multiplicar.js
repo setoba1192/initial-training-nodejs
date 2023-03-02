@@ -1,6 +1,6 @@
 const fyleSystem = require('fs');
 
-const crearArchivo = async (numero = 5) => {
+const crearArchivo = async (numero = 5, listar) => {
 
     console.log('=============');
     console.log(`Tabla del:${numero}`);
@@ -12,7 +12,9 @@ const crearArchivo = async (numero = 5) => {
         salida += `${numero} x ${i} = ${numero * i}\n`;
     }
 
-    console.log(salida);
+    if (listar) {
+        console.log(salida);
+    }
 
     try {
 
