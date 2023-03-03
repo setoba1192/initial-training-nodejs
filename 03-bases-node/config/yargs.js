@@ -17,6 +17,18 @@ const argv = require('yargs')
         default: false,
         describe : 'Lista la tabla de multiplicar'
     })
+    .option('h', {
+        alias: 'hasta',
+        type: 'number',
+        demandOption: true,
+        describe : 'Hasta que número?'
+    })
+    .check((argv, options) => {
+        if (isNaN(argv.b)) {
+            throw 'El # hasta tiene que ser un número'
+        }
+        return true;
+    })
     .argv;
 
 module.exports = argv;

@@ -1,15 +1,18 @@
 const fyleSystem = require('fs');
+const colors = require('colors');
 
-const crearArchivo = async (numero = 5, listar) => {
+const crearArchivo = async (numero = 5, limite, listar) => {
 
-    console.log('=============');
-    console.log(`Tabla del:${numero}`);
-    console.log('=============');
+    console.log('============='.green);
+    console.log('Tabla del:'.green, colors.red(numero));
+    console.log('============='.green);
 
     let salida = '';
+    let consola = '';
 
-    for (let i = 1; i <= 10; i++) {
-        salida += `${numero} x ${i} = ${numero * i}\n`;
+    for (let i = 1; i <= limite; i++) {
+        salida += `${numero} ${'x'.green} ${i} ${'='.green} ${numero * i}\n`;
+        consola += `${numero} x ${i} = ${numero * i}\n`;
     }
 
     if (listar) {
@@ -18,7 +21,7 @@ const crearArchivo = async (numero = 5, listar) => {
 
     try {
 
-        fyleSystem.writeFileSync(`tabla-${numero}.txt`, salida);
+        fyleSystem.writeFileSync(`./salida/tabla-${numero}.txt`, consola);
 
     } catch (err) {
         throw err;
