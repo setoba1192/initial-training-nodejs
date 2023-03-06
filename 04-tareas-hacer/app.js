@@ -1,4 +1,5 @@
-const { inquirerMenu, pausa } = require('./helpers/inquirer-menu')
+const { inquirerMenu, pausa } = require('./helpers/inquirer-menu');
+const Tarea = require('./models/tarea');
 
 require('colors');
 
@@ -8,6 +9,7 @@ const main = async () => {
 
     let opt = '';
     do {
+
         opt = await inquirerMenu();
         console.log({ opt });
         await pausa();
