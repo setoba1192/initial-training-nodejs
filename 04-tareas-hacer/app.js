@@ -1,10 +1,9 @@
 const { inquirerMenu, pausa, leerInput } = require('./helpers/inquirer-menu');
-const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
 
 require('colors');
 
-//console.clear();
+console.clear();
 
 const main = async () => {
 
@@ -21,7 +20,7 @@ const main = async () => {
                 tareas.crearTarea(desc)
                 break;
             case '2':
-                console.log(tareas._listado);
+                console.log(tareas.listadoArray);
                 break;
         }
 
