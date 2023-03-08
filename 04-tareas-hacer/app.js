@@ -1,4 +1,4 @@
-const { guardarDB } = require('./helpers/guardar-archivo');
+const { guardarDB, leerDB } = require('./helpers/guardar-archivo');
 const { inquirerMenu, pausa, leerInput } = require('./helpers/inquirer-menu');
 const Tareas = require('./models/tareas');
 
@@ -10,6 +10,13 @@ const main = async () => {
 
     let opt = '';
     const tareas = new Tareas();
+
+    const tareasDB = leerDB();
+
+    if (tareas) {
+
+    }
+    await pausa();
     do {
 
         opt = await inquirerMenu();
