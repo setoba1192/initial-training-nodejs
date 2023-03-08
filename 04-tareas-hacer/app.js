@@ -13,10 +13,10 @@ const main = async () => {
 
     const tareasDB = leerDB();
 
-    if (tareas) {
-
+    if (tareasDB) {
+        tareas.cargarTareasFromArray(tareasDB);
     }
-    await pausa();
+
     do {
 
         opt = await inquirerMenu();
