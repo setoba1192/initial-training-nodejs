@@ -25,7 +25,7 @@ class Tareas {
             delete this._listado[id];
         }
 
-        
+
     }
 
     cargarTareasFromArray(tareas = []) {
@@ -46,7 +46,8 @@ class Tareas {
             .filter(tarea => completadas ? tarea.completadoEn : !tarea.completadoEn)
             .forEach((tarea, index) => {
                 const idx = `${index + 1}.`.green
-                console.log(`${idx} ${tarea.desc} :: ${tarea.completadoEn ? 'Completada'.green : 'Pendiente'.red}`);
+                console.log(`${idx} ${tarea.desc} :: ${tarea.completadoEn ? 'Completada'.green + ' en :' + tarea.completadoEn
+                    : 'Pendiente'.red}`);
             })
     }
 
@@ -55,6 +56,21 @@ class Tareas {
 
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea;
+    }
+
+    toggleCompletadas(ids = []) {
+
+        ids.forEach(id => {
+            const tarea = this._listado[id];
+
+            if (!tarea.completadoEn) {
+                tarea.completadoEn = new Date().toISOString;
+            }
+        })
+
+        Object.keys(this._listado)
+            .filter(id => !ids.includes(id))
+            .forEach(id => this._listado[id].completadoEn = null);
     }
 
 }
