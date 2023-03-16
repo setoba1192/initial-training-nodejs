@@ -8,7 +8,7 @@ class Busquedas {
     dbPath = './db/database.json'
 
     constructor() {
-        // TODO: leer DB si existe
+        this.cargarBD();
     }
 
     get paramsMapbox() {
@@ -25,6 +25,16 @@ class Busquedas {
             units: 'metric',
             lang: 'es'
         }
+    }
+
+    get historialCapitalizado() {
+        return this.historial.map(lugar => {
+
+            let palabras = lugar.split(' ');
+            palabras = palabras.map(p => p[0].toUpperCase() + p.substring(1));
+
+            return palabras.join(' ');
+        })
     }
 
     async ciudad(lugar = '') {
@@ -83,6 +93,8 @@ class Busquedas {
             return;
         }
 
+        this.historial = this.historial.splice(0, 5);
+
         this.historial.unshift(lugar.toLocaleLowerCase());
 
         this.guardarDB();
@@ -96,6 +108,16 @@ class Busquedas {
 
         fs.writeFileSync(this.dbPath, JSON.stringify(payload));
 
+    }
+
+    cargarBD() {
+
+        if (!fs.existsSync(this.dbPath)) {
+            console.log('La base de datos no existe');
+            return;
+        }
+
+        this.historial = JSON.parse(fs.readFileSync(this.dbPath)).historial;
     }
 
 }

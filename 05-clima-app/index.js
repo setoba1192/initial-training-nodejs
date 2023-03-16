@@ -38,7 +38,7 @@ const main = async () => {
                 console.log('¿Cómo está el clima?:'.red, climaLugarSeleccionado.desc.green);
                 break;
             case 2:
-                busquedas.historial.forEach((lugar, index) => {
+                busquedas.historialCapitalizado.forEach((lugar, index) => {
                     console.log(`${index + 1}.`.green, `${lugar}`);
                 })
                 break;
