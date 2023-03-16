@@ -19,8 +19,11 @@ const main = async () => {
 
                 const id = await opcionesMenu(lugares);
 
+                if (id === '0') continue;
 
                 const lugarSeleccionado = lugares.find(lugar => lugar.id === id);
+
+                busquedas.agregarHistorial(lugarSeleccionado.nombre);
 
                 const climaLugarSeleccionado = await busquedas.climaLugar(lugarSeleccionado.lat, lugarSeleccionado.lng)
 
@@ -35,7 +38,9 @@ const main = async () => {
                 console.log('¿Cómo está el clima?:'.red, climaLugarSeleccionado.desc.green);
                 break;
             case 2:
-                console.log('Historial');
+                busquedas.historial.forEach((lugar, index) => {
+                    console.log(`${index + 1}.`.green, `${lugar}`);
+                })
                 break;
 
             case 0:
