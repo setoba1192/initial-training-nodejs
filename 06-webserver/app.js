@@ -13,7 +13,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.static("public"));
 
 const params = {
-  nombre: "Joan Sebastian Roa",
+  nombre: "Joan Sebastian Roa Sanchez v1.1",
   titulo: "Curso de Node",
 };
 
