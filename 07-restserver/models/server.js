@@ -25,11 +25,11 @@ class Server {
     });
 
     this.app.post("/api", (req, res) => {
-      res.json({ msg: "post API" });
+      res.status(201).json({ msg: "post API" });
     });
 
     this.app.put("/api", (req, res) => {
-      res.json({ msg: "put API" });
+      res.status(400).json({ msg: "put API" });
     });
 
     this.app.delete("/api", (req, res) => {
