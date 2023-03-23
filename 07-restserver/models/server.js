@@ -1,5 +1,6 @@
 /** @format */
 require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
 
 class Server {
@@ -15,6 +16,8 @@ class Server {
   }
 
   middlewares() {
+    //CORS
+    this.app.use(cors());
     // Directorio público
     this.app.use(express.static("public"));
   }
@@ -37,8 +40,8 @@ class Server {
     });
 
     this.app.patch("/api", (req, res) => {
-        res.json({ msg: "patch API" });
-      });
+      res.json({ msg: "patch API" });
+    });
   }
 
   listen() {
