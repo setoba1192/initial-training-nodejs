@@ -1,10 +1,11 @@
 /** @format */
-const { Response } = require("express");
+const { Response, Request } = require("express");
 
 const controllerName = "Controller!";
 
 const usuariosGet = (req, res) => {
-  res.json({ msg: "get API - " + controllerName });
+  const { q, nombre = "No name", apikey } = req.query;
+  res.json({ msg: "get API - " + controllerName, q, nombre, apikey });
 };
 
 const usuariosPost = (req, res) => {
@@ -13,7 +14,8 @@ const usuariosPost = (req, res) => {
 };
 
 const usuariosPut = (req, res) => {
-  res.status(400).json({ msg: "put API - " + controllerName });
+  const id = req.params.id;
+  res.status(400).json({ msg: "put API - " + controllerName, id });
 };
 
 const usuariosDelete = (req, res) => {
